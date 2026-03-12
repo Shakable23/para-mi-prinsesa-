@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Adanary - Mi Amor Eterno</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0e9 50%, #ffdde5 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Partículas flotantes */
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 20px;
+            animation: float 6s ease-in infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 1.5s ease;
+        }
+
+        .header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #d63384;
+            text-shadow: 2px 2px 4px rgba(214, 51, 132, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            color: #8b4557;
+            font-style: italic;
+        }
+
+        /* Main Content Grid */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Poem Section */
+        .poem-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(214, 51, 132, 0.2);
+            animation: fadeInLeft 1.5s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 182, 193, 0.5);
+        }
+
+        .poem-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #d63384;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .poem-text {
+            font-size: 1.25rem;
+            line-height: 2;
+            color: #5a3d44;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .poem-text p {
+            margin-bottom: 15px;
+        }
+
+        .love-declaration {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #e91e63;
+            text-align: center;
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Tree Section */
+        .tree-section {
+            position: relative;
+            height: 600px;
+            animation: fadeInRight 1.5s ease;
+        }
+
+        .tree-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Tronco */
+        .trunk {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 200px;
+            background: linear-gradient(to right, #5d4037, #8d6e63, #5d4037);
+            border-radius: 0 0 10px 10px;
+            box-shadow: inset -10px 0 20px rgba(0,0,0,0.3);
+        }
+
+        .trunk::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 60px;
+            background: linear-gradient(to right, #5d4037, #8d6e63, #5d4037);
+            border-radius: 50%;
+        }
+
+        /* Ramas */
+        .branch {
+            position: absolute;
+            background: linear-gradient(to bottom, #6d4c41, #5d4037);
+            border-radius: 10px;
+            transform-origin: bottom center;
+        }
+
+        .branch-left-1 {
+            width: 15px;
+            height: 120px;
+            bottom: 150px;
+            left: 35%;
+            transform: rotate(-30deg);
+        }
+
+        .branch-right-1 {
+            width: 15px;
+            height: 120px;
+            bottom: 160px;
+            right: 35%;
+            transform: rotate(30deg);
+        }
+
+        .branch-left-2 {
+            width: 12px;
+            height: 100px;
+            bottom: 220px;
+            left: 40%;
+            transform: rotate(-45deg);
+        }
+
+        .branch-right-2 {
+            width: 12px;
+            height: 100px;
+            bottom: 230px;
+            right: 40%;
+            transform: rotate(45deg);
+        }
+
+        /* Hojas/Corazones */
+        .heart-leaf {
+            position: absolute;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: sway 3s ease-in-out infinite;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .heart-leaf:hover {
+            transform: scale(1.3) !important;
+            z-index: 100;
+            filter: drop-shadow(4px 4px 8px rgba(214, 51, 132, 0.5));
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .heart-small { font-size: 24px; }
+        .heart-medium { font-size: 32px; }
+        .heart-large { font-size: 40px; }
+
+        /* Colores de corazones */
+        .color-red { color: #e91e63; }
+        .color-pink { color: #ff69b4; }
+        .color-rose { color: #ff1493; }
+        .color-coral { color: #ff6b6b; }
+        .color-light-pink { color: #ffb6c1; }
+        .color-deep-red { color: #c2185b; }
+
+        /* Tooltip para frases */
+        .heart-tooltip {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: #d63384;
+            max-width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 1000;
+            font-family: 'Dancing Script', cursive;
+            border: 2px solid #ffb6c1;
+        }
+
+        .heart-leaf:hover .heart-tooltip {
+            opacity: 1;
+        }
+
+        /* Contadores Section */
+        .counters-section {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .counter-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(214, 51, 132, 0.2);
+            border: 3px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            animation: fadeInUp 1s ease;
+            transition: transform 0.3s;
+        }
+
+        .counter-card::before {
+            content: '';
+            position: absolute;
+            top: -3px; left: -3px; right: -3px; bottom: -3px;
+            background: linear-gradient(45deg, #ff69b4, #ff1493, #e91e63, #ff69b4);
+            border-radius: 25px;
+            z-index: -1;
+        }
+
+        .counter-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .counter-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #d63384;
+            margin-bottom: 15px;
+        }
+
+        .counter-display {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .time-unit {
+            background: linear-gradient(135deg, #ffeef8, #ffdde5);
+            padding: 15px;
+            border-radius: 15px;
+            min-width: 70px;
+            border: 2px solid #ffb6c1;
+        }
+
+        .time-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #e91e63;
+            display: block;
+        }
+
+        .time-label {
+            font-size: 0.8rem;
+            color: #8b4557;
+            text-transform: uppercase;
+        }
+
+        .counter-message {
+            font-style: italic;
+            color: #5a3d44;
+            margin-top: 15px;
+            font-size: 1rem;
+        }
+
+        /* Meta Section */
+        .goal-section {
+            margin-top: 40px;
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.3), rgba(255, 105, 180, 0.3));
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            border: 3px dashed #e91e63;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .goal-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #c2185b;
+            margin-bottom: 20px;
+        }
+
+        .goal-text {
+            font-size: 1.3rem;
+            color: #5a3d44;
+            margin-bottom: 20px;
+        }
+
+        .progress-container {
+            background: rgba(255, 255, 255, 0.8);
+            height: 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 20px 0;
+            border: 2px solid #ffb6c1;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff69b4, #e91e63, #ff1493);
+            border-radius: 20px;
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(233, 30, 99, 0.5);
+        }
+
+        /* Firma */
+        .signature-section {
+            margin-top: 50px;
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(214, 51, 132, 0.2);
+            animation: fadeInUp 2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .signature-section::before {
+            content: '❤';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .signature-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #d63384;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .signature-name {
+            font-size: 2.8rem;
+            color: #e91e63;
+            margin-top: 20px;
+            text-shadow: 2px 2px 4px rgba(233, 30, 99, 0.3);
+        }
+
+        .hug-emoji {
+            font-size: 3rem;
+            display: inline-block;
+            animation: hug 2s ease-in-out infinite;
+        }
+
+        @keyframes hug {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Animaciones de entrada */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Efecto de brillo */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 2s linear infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2.5rem; }
+            .poem-section { padding: 25px; }
+            .tree-section { height: 400px; }
+            .time-number { font-size: 1.5rem; }
+            .time-unit { min-width: 60px; padding: 10px; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <!-- Corazones flotantes -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Para el Amor de Mi Vida</h1>
+            <p>Adanary, mi razón de ser, mi todo</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Poema -->
+            <div class="poem-section">
+                <h2 class="poem-title">Para Ti, Mi Amor</h2>
+                <div class="poem-text">
+                    <p>"Si pudiera elegir un lugar seguro,<br>sería a tu lado."</p>
+                    <p>Cuanto más tiempo estoy contigo<br>más te amo.</p>
+                    <p>Eres el sueño que nunca quiero despertar,<br>la melodía que alegra mi corazón,<br>el sol que ilumina mis días<br>y la luna que guía mis noches.</p>
+                    <p>Contigo aprendí que el amor verdadero<br>no es solo sentir mariposas,<br>es sentir paz, hogar y eternidad<br>en cada mirada tuya.</p>
+                    <p>Adanary, eres mi primer pensamiento<br>al despertar y mi último suspiro<br>antes de dormir.</p>
+                </div>
+                <div class="love-declaration">— I Love You! ❤</div>
+            </div>
+
+            <!-- Árbol de Corazones -->
+            <div class="tree-section">
+                <div class="tree-container" id="treeContainer">
+                    <!-- Tronco y ramas se generan con CSS -->
+                    <div class="trunk"></div>
+                    <div class="branch branch-left-1"></div>
+                    <div class="branch branch-right-1"></div>
+                    <div class="branch branch-left-2"></div>
+                    <div class="branch branch-right-2"></div>
+                    <!-- Los corazones se generan con JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Contadores -->
+        <div class="counters-section">
+            <!-- Contador desde el inicio del amor -->
+            <div class="counter-card">
+                <h3 class="counter-title">Nuestro Amor Comenzó Hace...</h3>
+                <div class="counter-display" id="loveCounter">
+                    <div class="time-unit">
+                        <span class="time-number" id="loveDays">0</span>
+                        <span class="time-label">Días</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-number" id="loveHours">0</span>
+                        <span class="time-label">Horas</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-number" id="loveMinutes">0</span>
+                        <span class="time-label">Minutos</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-number" id="loveSeconds">0</span>
+                        <span class="time-label">Segundos</span>
+                    </div>
+                </div>
+                <p class="counter-message">Desde el 11 de marzo de 2016<br>Mi amor por ti solo crece ❤</p>
+            </div>
+
+            <!-- Contador de meses juntos -->
+            <div class="counter-card">
+                <h3 class="counter-title">Meses Juntos Oficialmente</h3>
+                <div class="counter-display" id="monthsCounter">
+                    <div class="time-unit">
+                        <span class="time-number" id="monthsCount">0</span>
+                        <span class="time-label">Meses</span>
+                    </div>
+                    <div class="time-unit">
+                        <span class="time-number" id="daysInMonth">0</span>
+                        <span class="time-label">Días</span>
+                    </div>
+                </div>
+                <p class="counter-message">Desde el 15 de diciembre de 2025<br>Cada día a tu lado es un regalo 🎁</p>
+            </div>
+        </div>
+
+        <!-- Meta del Año -->
+        <div class="goal-section">
+            <h2 class="goal-title">🎯 Nuestra Meta: Nuestro Primer Año Juntos</h2>
+            <p class="goal-text">Estamos construyendo algo hermoso... ¡Nuestro primer año de amor!</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="yearProgress" style="width: 0%">
+                    <span id="progressPercent">0%</span>
+                </div>
+            </div>
+            <p class="goal-text" id="daysRemaining">Calculando días para nuestro primer aniversario...</p>
+            <p style="font-family: 'Dancing Script', cursive; font-size: 1.5rem; color: #e91e63; margin-top: 15px;">
+                "El amor no cuenta los días, pero los días cuentan cuando se ama"
+            </p>
+        </div>
+
+        <!-- Firma -->
+        <div class="signature-section">
+            <div class="signature-text">
+                <p>Con todo mi amor, mi corazón y mi alma...</p>
+                <p>Eres mi todo, mi eternidad, mi felicidad.</p>
+                <p>Gracias por existir y por permitirme amarte.</p>
+                <p class="signature-name">Ramses <span class="hug-emoji">🫂</span></p>
+                <p style="font-size: 1.5rem; margin-top: 10px;">La persona que te adora demasiado</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Frases para los corazones del árbol
+        const heartPhrases = [
+            "Eres mi todo",
+            "Te amo infinito",
+            "Mi razón de sonreír",
+            "Eres perfecta",
+            "Mi felicidad eres tú",
+            "Contigo todo es mejor",
+            "Eres mi sueño hecho realidad",
+            "Mi corazón es tuyo",
+            "Amo tu sonrisa",
+            "Eres mi hogar",
+            "Mi amor eterno",
+            "Eres mi estrella",
+            "Te adoro",
+            "Mi princesa",
+            "Eres mi vida",
+            "Mi mejor regalo",
+            "Eres mi inspiración",
+            "Mi amor por ti no tiene fin",
+            "Eres mi paz",
+            "Mi todo eres tú",
+            "Eres mi sol",
+            "Te amo más cada día",
+            "Eres mi destino",
+            "Mi corazón late por ti",
+            "Eres mi magia",
+            "Mi amor verdadero",
+            "Eres mi refugio",
+            "Te necesito",
+            "Eres mi alegría",
+            "Mi amor incondicional",
+            "Eres mi luz",
+            "Te elijo siempre",
+            "Eres mi tesoro",
+            "Mi alma gemela",
+            "Eres mi mundo",
+            "Te amo Adanary",
+            "Eres mi bendición",
+            "Mi futuro eres tú",
+            "Eres mi complicidad",
+            "Mi amor más grande"
+        ];
+
+        // Generar corazones en el árbol
+        function generateHeartTree() {
+            const container = document.getElementById('treeContainer');
+            const colors = ['color-red', 'color-pink', 'color-rose', 'color-coral', 'color-light-pink', 'color-deep-red'];
+            const sizes = ['heart-small', 'heart-medium', 'heart-large'];
+
+            // Posiciones predefinidas para formar una copa de árbol en forma de corazón
+            const positions = [
+                // Centro superior
+                {x: 50, y: 10, s: 2}, {x: 45, y: 15, s: 1}, {x: 55, y: 15, s: 1},
+                {x: 40, y: 20, s: 2}, {x: 50, y: 20, s: 0}, {x: 60, y: 20, s: 2},
+
+                // Lados superiores (curva del corazón)
+                {x: 30, y: 25, s: 1}, {x: 35, y: 22, s: 2}, {x: 65, y: 22, s: 2}, {x: 70, y: 25, s: 1},
+                {x: 25, y: 30, s: 2}, {x: 75, y: 30, s: 2},
+                {x: 20, y: 35, s: 1}, {x: 80, y: 35, s: 1},
+
+                // Centro medio
+                {x: 50, y: 30, s: 0}, {x: 45, y: 35, s: 1}, {x: 55, y: 35, s: 1},
+                {x: 40, y: 40, s: 2}, {x: 50, y: 40, s: 1}, {x: 60, y: 40, s: 2},
+
+                // Lados medios
+                {x: 30, y: 40, s: 1}, {x: 70, y: 40, s: 1},
+                {x: 25, y: 45, s: 2}, {x: 75, y: 45, s: 2},
+                {x: 20, y: 50, s: 1}, {x: 80, y: 50, s: 1},
+
+                // Centro inferior
+                {x: 50, y: 50, s: 0}, {x: 45, y: 55, s: 1}, {x: 55, y: 55, s: 1},
+                {x: 50, y: 60, s: 2},
+
+                // Base
+                {x: 35, y: 55, s: 1}, {x: 65, y: 55, s: 1},
+                {x: 40, y: 60, s: 2}, {x: 60, y: 60, s: 2},
+
+                // Adicionales para densidad
+                {x: 33, y: 30, s: 1}, {x: 67, y: 30, s: 1},
+                {x: 28, y: 38, s: 2}, {x: 72, y: 38, s: 2},
+                {x: 42, y: 28, s: 1}, {x: 58, y: 28, s: 1},
+                {x: 38, y: 48, s: 1}, {x: 62, y: 48, s: 1},
+                {x: 48, y: 45, s: 2}, {x: 52, y: 45, s: 2}
+            ];
+
+            positions.forEach((pos, index) => {
+                const heart = document.createElement('div');
+                heart.className = `heart-leaf ${sizes[pos.s]} ${colors[index % colors.length]}`;
+                heart.style.left = pos.x + '%';
+                heart.style.top = pos.y + '%';
+                heart.style.animationDelay = (index * 0.1) + 's';
+                heart.innerHTML = '❤';
+
+                // Agregar tooltip con frase
+                const phrase = heartPhrases[index % heartPhrases.length];
+                const tooltip = document.createElement('div');
+                tooltip.className = 'heart-tooltip';
+                tooltip.textContent = phrase;
+                tooltip.style.bottom = '100%';
+                tooltip.style.left = '50%';
+                tooltip.style.transform = 'translateX(-50%)';
+                tooltip.style.marginBottom = '10px';
+
+                heart.appendChild(tooltip);
+                container.appendChild(heart);
+            });
+        }
+
+        // Generar corazones flotantes
+        function generateFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            const hearts = ['❤', '💖', '💕', '💗', '💓', '💝'];
+
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                container.appendChild(heart);
+
+                setTimeout(() => heart.remove(), 7000);
+            }, 800);
+        }
+
+        // Actualizar contadores
+        function updateCounters() {
+            const now = new Date();
+
+            // Fecha de inicio del amor: 11 de marzo de 2016
+            const loveStart = new Date('2016-03-11T00:00:00');
+            const loveDiff = now - loveStart;
+
+            const loveDays = Math.floor(loveDiff / (1000 * 60 * 60 * 24));
+            const loveHours = Math.floor((loveDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const loveMinutes = Math.floor((loveDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const loveSeconds = Math.floor((loveDiff % (1000 * 60)) / 1000);
+
+            document.getElementById('loveDays').textContent = loveDays;
+            document.getElementById('loveHours').textContent = loveHours;
+            document.getElementById('loveMinutes').textContent = loveMinutes;
+            document.getElementById('loveSeconds').textContent = loveSeconds;
+
+            // Fecha de inicio oficial: 15 de diciembre de 2025
+            const officialStart = new Date('2025-12-15T00:00:00');
+
+            // Si la fecha oficial aún no llega, mostrar cuenta regresiva o mensaje
+            if (now < officialStart) {
+                const diffToStart = officialStart - now;
+                const daysToStart = Math.ceil(diffToStart / (1000 * 60 * 60 * 24));
+                document.getElementById('monthsCount').textContent = '0';
+                document.getElementById('daysInMonth').textContent = daysToStart;
+                document.querySelector('#monthsCounter').nextElementSibling.textContent = 
+                    `Faltan ${daysToStart} días para empezar oficialmente ❤`;
+            } else {
+                const monthsDiff = now - officialStart;
+                const months = Math.floor(monthsDiff / (1000 * 60 * 60 * 24 * 30.44));
+                const days = Math.floor((monthsDiff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+
+                document.getElementById('monthsCount').textContent = months;
+                document.getElementById('daysInMonth').textContent = days;
+            }
+
+            // Meta: Primer aniversario (15 de diciembre de 2026)
+            const firstAnniversary = new Date('2026-12-15T00:00:00');
+            const totalTime = firstAnniversary - officialStart;
+            const elapsed = now - officialStart;
+            const remaining = firstAnniversary - now;
+
+            let progress = 0;
+            if (now >= officialStart) {
+                progress = Math.min(100, Math.max(0, (elapsed / totalTime) * 100));
+            }
+
+            document.getElementById('yearProgress').style.width = progress + '%';
+            document.getElementById('progressPercent').textContent = progress.toFixed(1) + '%';
+
+            if (remaining > 0) {
+                const daysRemaining = Math.ceil(remaining / (1000 * 60 * 60 * 24));
+                document.getElementById('daysRemaining').textContent = 
+                    `¡Faltan ${daysRemaining} días para nuestro primer aniversario! 🎉`;
+            } else {
+                document.getElementById('daysRemaining').textContent = 
+                    `¡Feliz Primer Aniversario, mi amor! 🎊❤🎊`;
+            }
+        }
+
+        // Inicializar
+        window.onload = function() {
+            generateHeartTree();
+            generateFloatingHearts();
+            updateCounters();
+            setInterval(updateCounters, 1000);
+        };
+    </script>
+</body>
+</html>
